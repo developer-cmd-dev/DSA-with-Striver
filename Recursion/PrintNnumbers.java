@@ -1,20 +1,20 @@
 package Recursion;
 
 public class PrintNnumbers {
-    private static int n=1;
 
     public static void main(String[] args) {
 
-        printN();
+        int n=10;
+        int i=1;
+        printN(i,n);
     }
 
-    private static int printN(){
-        if (n==10){
+    private static int printN(int i,int n){
+        if (i>n){
             return 0;
         }else {
-            System.out.println(n);
-            n++;
-            return printN();
+            System.out.println(i);
+            return printN(i+1,n);
 
         }
     }
