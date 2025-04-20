@@ -8,10 +8,10 @@ public class StringHashing {
         int[] hash = new int[256];
 
         for (int i = 0; i <charArr.length ; i++) {
-            hash[charArr[i]-'a']++;
+            hash[charArr[i]]++;
         }
 
-        System.out.println(hash['b'-'a']);
+        System.out.println(hash['a']);
 
 
     }
