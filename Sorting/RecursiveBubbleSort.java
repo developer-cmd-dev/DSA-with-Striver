@@ -1,4 +1,4 @@
-package sorting;
+package Sorting;
 
 public class RecursiveBubbleSort {
     public static void main(String[] args) {
