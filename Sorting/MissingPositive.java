@@ -4,7 +4,7 @@ class MissingPositive {
 
 
     public static void main(String[] args) {
-    int[] arr = {3,0,1};
+    int[] arr = {1,2,0};
     int result = missingNumber(arr);
         System.out.println(result);
 
@@ -17,9 +17,9 @@ class MissingPositive {
 
         int i=0;
         while(i<arr.length){
-            int correct = arr[i];
+            int correct = arr[i]-1;
             
-            if(arr[i]<arr.length && arr[i]!=arr[correct]){
+            if(arr[i]>0&&arr[i]<=arr.length && arr[i]!=arr[correct]){
                 swap(arr,i,correct);
             }else{
                 i++;
@@ -29,9 +29,9 @@ class MissingPositive {
 
 
             for(int j=0;j<arr.length;j++){
-                if(arr[j]!=arr[j]) return arr[j];
+                if(arr[j]!=j) return j+1;
             }
-            return arr.length;
+            return arr.length+1;
         
     }
 
