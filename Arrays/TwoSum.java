@@ -8,9 +8,6 @@ public class TwoSum {
     public static void main(String[] args) {
     int[] arr={4,1,2,3,1};
         System.out.println(Arrays.toString(twoSum(arr,arr.length,5)));
-
-
-
     }
 
     public static int[] twoSum(int[] arr,int n,int target){
