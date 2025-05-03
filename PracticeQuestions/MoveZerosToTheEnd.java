@@ -8,9 +8,8 @@ public class MoveZerosToTheEnd {
     public static void main(String[] args) {
 
         int[] arr={1,0,2,3,2,0,0,4,5,1};
-        zerosTotheEndBrute(arr,arr.length);
-
-
+//        zerosTotheEndBrute(arr,arr.length);
+        zerosTotheEndOptimal(arr,arr.length);
     }
 
     public static void zerosTotheEndBrute(int[] arr,int n){
@@ -32,4 +31,30 @@ public class MoveZerosToTheEnd {
 
         System.out.println("Brute Force: "+ Arrays.toString(arr));
     }
+
+    public static void zerosTotheEndOptimal(int[] arr,int n){
+
+        int j=-1;
+        for (int k = 0; k < n; k++) {
+            if(arr[k]==0){
+             j=k;
+             break;
+            }
+        }
+
+        for (int i = j+1; i <n ; i++) {
+            if(arr[i]!=0){
+                int temp=arr[j];
+                arr[j]=arr[i];
+                arr[i]=temp;
+                j++;
+            }
+        }
+
+
+
+        System.out.println("Optimal Approach: "+ Arrays.toString(arr));
+
+    }
+
 }
