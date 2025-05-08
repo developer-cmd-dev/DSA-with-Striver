@@ -6,7 +6,8 @@ import java.util.Map;
 public class MajorityElement {
     public static void main(String[] args) {
         int[] arr={2,2,1,3,1,1,3,1,1};
-        System.out.println(betterApproach(arr,arr.length));
+//        System.out.println(betterApproach(arr,arr.length));
+        System.out.println(optimalApproach(arr,arr.length));
 
     }
 
@@ -29,5 +30,35 @@ public class MajorityElement {
             }
         }
         return -1;
+    }
+
+    public static int optimalApproach(int[] arr,int n){
+        int count=0;
+        int elem=0;
+
+        for (int i = 0; i <n ; i++) {
+            if(count==0){
+                elem=arr[i];
+                count=1;
+            } else if (count==arr[i]) {
+                count++;
+
+            }else{
+                count--;
+            }
+
+        }
+        int result=0;
+        for (int i = 0; i <n ; i++) {
+            if(arr[i]==elem){
+                result++;
+                if(result>n/2) return arr[i];
+            }
+            
+        }
+
+        return -1;
+
+        
     }
 }
