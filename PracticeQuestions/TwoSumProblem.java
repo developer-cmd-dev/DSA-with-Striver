@@ -1,11 +1,14 @@
 package PracticeQuestions;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TwoSumProblem {
     public static void main(String[] args) {
     int[] arr={2,6,5,8,1};
-        System.out.println(Arrays.toString(bruteForce(arr,arr.length,14)));
+//        System.out.println(Arrays.toString(bruteForce(arr,arr.length,14)));
+        System.out.println(Arrays.toString(betterApproach(arr,arr.length,14)));
 
     }
 
@@ -23,6 +26,28 @@ public class TwoSumProblem {
 
         }
         return result;
+    }
+
+
+
+    public static int[] betterApproach(int[] arr,int n,int target){
+        Map<Integer,Integer> map=new HashMap<>();
+        int[] result=new int[2];
+        for (int i = 0; i <n ; i++) {
+            if(map.containsKey(target-arr[i])){
+                result[0]=i;
+                result[1]=map.get(target-arr[i]);
+            }else{
+                map.put(arr[i],i);
+            }
+        }
+        System.out.println(map);
+
+
+        return result;
+
+
+        
     }
 
 
