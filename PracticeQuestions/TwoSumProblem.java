@@ -8,7 +8,8 @@ public class TwoSumProblem {
     public static void main(String[] args) {
     int[] arr={2,6,5,8,1};
 //        System.out.println(Arrays.toString(bruteForce(arr,arr.length,14)));
-        System.out.println(Arrays.toString(betterApproach(arr,arr.length,14)));
+//        System.out.println(Arrays.toString(betterApproach(arr,arr.length,14)));
+        System.out.println(optimalApproach(arr,arr.length,14));
 
     }
 
@@ -48,6 +49,23 @@ public class TwoSumProblem {
 
 
         
+    }
+
+    public static boolean optimalApproach(int[] arr,int n,int target){
+        Arrays.sort(arr);
+        int left=0,right=n-1;
+        while (left<right){
+            if((arr[left]+arr[right])<target){
+                left++;
+            } else if ((arr[left]+arr[right])>target) {
+                right--;
+            }else if((arr[left]+arr[right])==target){
+                return true;
+            }
+        }
+
+        return false;
+
     }
 
 
