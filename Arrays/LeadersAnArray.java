@@ -33,5 +33,19 @@ public class LeadersAnArray {
         System.out.println(result);
     }
 
+    public static void optimalapp(int[] arr,int n){
+        int max = Integer.MIN_VALUE;
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = n-1; i >=0 ; i--) {
+            if(arr[i]>max){
+                max=arr[i];
+                result.add(arr[i]);
+
+            }
+        }
+        System.out.println(result);
+    }
+
 
 }
