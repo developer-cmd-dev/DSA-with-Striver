@@ -1,7 +1,9 @@
 package Arrays;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LongestConsecutiveSequence {
     public static void main(String[] args) {
@@ -9,6 +11,7 @@ public class LongestConsecutiveSequence {
         int[] arr={102,4,100,1,101,3,2,1,1};
         bruteForce(arr,arr.length);
         betterApproach(arr,arr.length);
+        optimalApproach(arr,arr.length);
     }
 
 
@@ -55,5 +58,31 @@ public class LongestConsecutiveSequence {
         }
 
         System.out.println(longest);
+    }
+
+
+    public static void optimalApproach(int[] arr,int n){
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i <n ; i++) {
+            set.add(arr[i]);
+        }
+        int longest=1;
+
+        for (int value:set){
+            if(!set.contains(value-1)){
+                int count=1,x=value;
+                while (set.contains(x+1)){
+                    count++;
+                    x=x+1;
+                }
+                longest = Math.max(longest,count);
+
+            }
+
+
+        }
+
+        System.out.println(longest);
+
     }
 }
