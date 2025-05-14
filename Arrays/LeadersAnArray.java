@@ -8,6 +8,7 @@ public class LeadersAnArray {
 
         int[] arr = {10,22,12,3,0,6};
         bruteForce(arr,arr.length);
+        optimalapp(arr,arr.length);
 
     }
 
@@ -44,6 +45,7 @@ public class LeadersAnArray {
 
             }
         }
+        result.sort((a,b)->b-a);
         System.out.println(result);
     }
 
