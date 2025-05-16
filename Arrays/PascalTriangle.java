@@ -5,6 +5,7 @@ public class PascalTriangle {
 
 //        System.out.println(funcNcR(4,2));
         printRow(6);
+        printTriangle(7);
 
 
     }
@@ -31,6 +32,15 @@ public class PascalTriangle {
                 result=result*(n-i);
                 result=result/i;
             System.out.print(result+" ");
+        }
+        System.out.println();
+    }
+
+    // Print pascal triangle;
+    public static void printTriangle(int row){
+        for (int i = 1; i <row ; i++) {
+            printRow(i);
+
         }
     }
 }
