@@ -11,6 +11,7 @@ public class MajorityElementsNby3 {
         int[] arr={1,1,1,3,3,2,2,2};
         bruteForce(arr,arr.length);
         betterAppr(arr,arr.length);
+        optimalSolution(arr,arr.length);
 
 
 
@@ -60,6 +61,43 @@ public class MajorityElementsNby3 {
         }
 
         System.out.println(result);
+
+    }
+
+
+    public static void optimalSolution(int[] arr,int n){
+        int count1=0,count2=0,elem1=Integer.MIN_VALUE,elem2=Integer.MIN_VALUE;
+
+        for (int i = 0; i <n ; i++) {
+
+
+            if(count1==0 && elem2!=arr[i]){
+                count1=1;
+                elem1=arr[i];
+            } else if(count2==0 && elem1!=arr[i]){
+                count2=1;
+                elem2=arr[i];
+            }else if(elem1==arr[i]) count1++;
+            else if(elem2==arr[i]) count2++;
+            else{
+                count1--;
+                count2--;
+            }
+        }
+
+        count1=0;
+        count2=0;
+        for (int i = 0; i <n ; i++) {
+            if (elem1==arr[i])count1++;
+            if (elem2==arr[i])count2++;
+        }
+
+        List<Integer> result=new ArrayList<>();
+        if(count1>(n/3)) result.add(elem1);
+        if(count2>(n/3)) result.add(elem2);
+        System.out.println(result);
+
+
 
     }
 
