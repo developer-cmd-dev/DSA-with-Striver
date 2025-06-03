@@ -17,14 +17,16 @@ public class MergeOverlappingIntervals {
                 {15,18},
                 {16,17}
         };
+        int columnIndex=1;
+        Arrays.sort(arr,Comparator.comparingInt(row->row[columnIndex]));
 
         bruteForce(arr,arr.length);
+        optimalSolution(arr,arr.length);
 
 
     }
     public static void bruteForce(int[][] arr,int n){
-        int columnIndex=1;
-        Arrays.sort(arr,Comparator.comparingInt(row->row[columnIndex]));
+
         List<List<Integer>> ans = new ArrayList<>();
         for (int i = 0; i <n ; i++) {
             int start = arr[i][0];
@@ -46,6 +48,29 @@ public class MergeOverlappingIntervals {
         }
 
         System.out.println(ans);
+
+    }
+
+    public static void optimalSolution(int[][] arr,int n){
+        List<List<Integer>> ans = new ArrayList<>();
+
+        for (int i = 0; i <n ; i++) {
+            if(ans.isEmpty() || arr[i][0]>ans.getLast().get(1)){
+                ans.add(Arrays.asList(arr[i][0],arr[i][1]));
+            }else{
+                ans.getLast().set(1,Math.max(ans.getLast().get(1),arr[i][1]));
+            }
+
+        }
+        int[][] answer = new int[ans.size()][ans.getFirst().size()];
+
+        for (int i = 0; i <answer.length ; i++) {
+            for (int j = 0; j <answer[i].length ; j++) {
+                    answer[i][j]=ans.get(i).get(j);
+            }
+        }
+
+        System.out.println(Arrays.deepToString(answer));
 
     }
 
