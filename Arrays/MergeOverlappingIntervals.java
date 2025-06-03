@@ -18,7 +18,11 @@ public class MergeOverlappingIntervals {
                 {16,17}
         };
         int columnIndex=1;
-        Arrays.sort(arr,Comparator.comparingInt(row->row[columnIndex]));
+        Arrays.sort(arr, new Comparator<int[]>() {
+            public int compare(int[] a, int[] b) {
+                return a[0] - b[0];
+            }
+        });
 
         bruteForce(arr,arr.length);
         optimalSolution(arr,arr.length);
