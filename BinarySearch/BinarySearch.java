@@ -5,7 +5,7 @@ public class BinarySearch {
         int[] arr = {3,4,6,7,8,9,12,17};
         int low = 0;
         int high = arr.length-1;
-        int target=7;
+        int target=13;
         System.out.println( binarySearch(arr,low,high,target));
     }
 
