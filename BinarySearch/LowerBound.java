@@ -2,11 +2,11 @@ package BinarySearch;
 
 public class LowerBound {
     public static void main(String[] args) {
-        int[] arr = {3,4,6,7,8,9,10,12,17};
+        int[] arr = {3, 4, 6, 7, 8, 9, 10, 12, 17};
         int low = 0;
-        int high = arr.length-1;
-        int target=5;
-        System.out.println( lowerBound(arr,low,high,target));
+        int high = arr.length - 1;
+        int target = 5;
+        System.out.println(lowerBound(arr, low, high, target));
 
     }
 
