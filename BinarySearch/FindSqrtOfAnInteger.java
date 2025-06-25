@@ -9,11 +9,8 @@ public class FindSqrtOfAnInteger {
 
     public static void binarySearch(int target){
         int low =1,high=target;
-        int ans = -1;
         while (low<=high){
             int mid = (low+high)/2;
-            if((mid*mid)<=target) ans=mid;
-
             if((mid*mid)>target){
                 high=mid-1;
             }else{
@@ -21,6 +18,6 @@ public class FindSqrtOfAnInteger {
             }
         }
 
-        System.out.println(ans);
+        System.out.println(high);
     }
 }
