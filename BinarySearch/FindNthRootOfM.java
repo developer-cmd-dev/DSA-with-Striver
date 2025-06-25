@@ -2,7 +2,7 @@ package BinarySearch;
 
 public class FindNthRootOfM {
     public static void main(String[] args) {
-        binarySearch(69,4);
+        binarySearch(200,4);
 
 
     }
