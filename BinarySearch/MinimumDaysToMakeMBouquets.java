@@ -3,8 +3,10 @@ package BinarySearch;
 public class MinimumDaysToMakeMBouquets {
     public static void main(String[] args) {
 
-        int[] arr = {7,8,9,10,11,12,13};
-        System.out.println(bruteForce(arr,2,4));
+//        int[] arr = {7,8,9,10,11,12,13};
+        int[] arr = {1,2,3,10};
+        System.out.println(bruteForce(arr,3,1));
+        System.out.println(binarySearch(arr,3,1));
 
 
 
@@ -24,18 +26,40 @@ public class MinimumDaysToMakeMBouquets {
         return -1;
     }
 
+
+
+    public static int binarySearch(int[] bloomDay,int m,int k){
+        if(bloomDay.length < (m*k)) return -1;
+        int high = findMax(bloomDay);
+        int low = findMin(bloomDay);
+
+
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(search(bloomDay,m,k,mid)){
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+        }
+
+        return low;
+
+
+    }
+
     public static boolean search(int[] arr,int m,int k,int days){
         int count=0;
         int noOfBou=0;
-        for (int i = 0; i <arr.length ; i++) {
-            if(arr[i]<=days){
+        for (int j : arr) {
+            if (j <= days) {
                 count++;
-            }else{
-                noOfBou+=(count/k);
+            } else {
+                noOfBou += (count / k);
             }
 
         }
-
+        noOfBou += (count / k);
         return noOfBou >= m;
     }
 
@@ -48,6 +72,7 @@ public class MinimumDaysToMakeMBouquets {
             if (j > max) {
                 max = j;
             }
+
         }
         return max;
     }
