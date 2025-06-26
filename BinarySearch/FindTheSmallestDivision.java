@@ -11,8 +11,8 @@ public class FindTheSmallestDivision {
     public static int binarySearch(int[] nums,int threshold){
         long max = Long.MIN_VALUE;
         long n = nums.length;
-        for(int i=0;i<n;i++){
-            max = Math.max(nums[i],max);
+        for (int num : nums) {
+            max = Math.max(num, max);
         }
 
         long low = 1,high=max;
