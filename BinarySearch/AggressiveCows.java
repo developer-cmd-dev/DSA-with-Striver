@@ -10,6 +10,7 @@ public class AggressiveCows {
         int cows = 4;
 
         System.out.println(bruteForce(arr,cows));
+        System.out.println(binarySearch(arr,cows));
 
 
 
@@ -32,6 +33,24 @@ public class AggressiveCows {
 
         return -1;
         
+    }
+
+    public static int binarySearch(int[]arr,int cows){
+        Arrays.sort(arr);
+        int n= arr.length;
+        int low = arr[0],high=arr[n-1];
+
+        while (low<=high){
+            int mid=(low+high)/2;
+            if(canWePlace(arr,mid,cows)){
+                low=mid+1;
+            }else{
+                high=mid-1;
+            }
+        }
+
+        return high;
+
     }
 
     public static boolean canWePlace(int[] arr,int dist,int cows){
