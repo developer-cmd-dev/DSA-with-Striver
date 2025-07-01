@@ -6,6 +6,7 @@ public class BooksAllocation {
         int[] arr={25,46,28,49,24};
         int students=4;
         System.out.println(bruteForce(arr,students));
+        System.out.println(binarySearch(arr,students));
 
     }
 
@@ -30,6 +31,31 @@ public class BooksAllocation {
 
          return -1;
 
+    }
+
+    public static int binarySearch(int[] arr,int students){
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+        int n=arr.length;
+        for (int j : arr) {
+            max = Math.max(j, max);
+            sum += j;
+        }
+
+        int low =max,high=sum;
+
+      while (low<=high){
+          int mid=(low+high)/2;
+          int countStudents=count(arr,mid);
+          if(countStudents>students){
+              low=mid+1;
+          }else{
+              high=mid-1;
+          }
+      }
+
+
+        return low;
     }
 
     public static int count(int[] arr,int pages){
