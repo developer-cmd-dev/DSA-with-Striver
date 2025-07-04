@@ -5,6 +5,7 @@ public class FindSmallestDivisor {
         int[] arr = {1,2,5,9};
         int threshold=6;
         System.out.println(bruteForce(arr,threshold));
+        System.out.println(binarySearch(arr,threshold));
 
 
 
@@ -22,6 +23,25 @@ public class FindSmallestDivisor {
 
         }
         return -1;
+    }
+
+    public static int binarySearch(int[] arr,int threshold){
+        int low=1;
+        int n=arr.length;
+        int high=arr[n-1];
+
+        while (low<=high){
+            int mid=(low+high)/2;
+            if (calcDivisor(arr,mid)<=threshold){
+                high=mid-1;
+
+            }else{
+                low=mid+1;
+            }
+        }
+
+        return low;
+
     }
 
 
