@@ -15,12 +15,20 @@ public class MinimumNoOfDaysMBouquets {
 
     public static int bruteForce(int[] arr,int m,int k){
 
-        Arrays.sort(arr);
-        int low =arr[0];
-        int high = arr[arr.length-1];
-        for (int i = low; i <=high ; i++) {
+
+        int max =Integer.MIN_VALUE;
+        int min =Integer.MAX_VALUE;
+
+        for (int j : arr) {
+            max = Math.max(j, max);
+            min = Math.min(j, min);
+
+        }
+
+        for (int i = min; i <=max ; i++) {
             int calculatedDays = calcDays(arr,i,k);
-            if (calculatedDays==m) return i;
+
+            if (calculatedDays==m) return i-1;
             
         }
         return -1;
@@ -37,13 +45,13 @@ public class MinimumNoOfDaysMBouquets {
         for (int i = 0; i <arr.length ; i++) {
             if(arr[i]<=days){
                 pairs++;
-                if(pairs==k)countBouq++;
             }else{
+                countBouq+=(pairs/k);
                 pairs=0;
             }
 
         }
-        System.out.println(countBouq);
+        countBouq+=(pairs/k);
 
         return countBouq;
 
