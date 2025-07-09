@@ -6,8 +6,31 @@ public class CapacityToShipPackagesWithinDDays {
         int[] arr = {1,2,3,4,5,6,7,8,9,10};
         int days = 5;
         System.out.println(bruteForce(arr,days));
+        System.out.println(binarySearch(arr,days));
 
 
+    }
+
+    public static int binarySearch(int[] arr,int days){
+        int n=arr.length;
+        int low =arr[n-1];
+        int high=0;
+        for (int j : arr) {
+            high += j;
+        }
+
+        while(low<=high){
+            int mid = (low+high)/2;
+            int daysRequired = countDays(arr,mid);
+            if (daysRequired>days){
+                low=mid+1;
+            }else{
+                high=mid-1;
+            }
+
+
+        }
+        return low;
     }
 
 
