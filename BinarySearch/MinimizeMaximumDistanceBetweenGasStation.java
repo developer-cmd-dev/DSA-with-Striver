@@ -1,8 +1,6 @@
 package BinarySearch;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class MinimizeMaximumDistanceBetweenGasStation {
     public static void main(String[] args) {
@@ -11,6 +9,7 @@ public class MinimizeMaximumDistanceBetweenGasStation {
         int[] arr={1,13,17,23};
         int k=5;
         bruteForce(arr,k);
+        System.out.println(optimalSolution(arr,k));
 
 
 
@@ -47,5 +46,30 @@ public class MinimizeMaximumDistanceBetweenGasStation {
         System.out.println(maxAns);
         return 0;
 
+    }
+
+
+    public static int optimalSolution(int[] arr,int k){
+        int[] howMany =new int[arr.length-1];
+        Queue<List<Integer>> pq = new PriorityQueue<>((a,b)->b.getFirst()-a.getFirst());
+
+        for (int i = 0; i <arr.length-1 ; i++) {
+            int diff = (arr[i+1]-arr[i]);
+            pq.add(List.of(diff,i));
+
+        }
+
+        for (int i = 1; i <=k ; i++) {
+            List<Integer> top=pq.peek();
+            pq.remove();
+            int secInd = top.getLast();
+            howMany[secInd]++;
+            int iniDiff = (arr[secInd+1]-arr[secInd]);
+            int newSec = iniDiff/(howMany[secInd]+1);
+            pq.add(List.of(newSec,secInd));
+
+        }
+
+        return pq.peek().getFirst();
     }
 }
