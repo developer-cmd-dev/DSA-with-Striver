@@ -20,57 +20,36 @@ class Node{
     }
 }
 
-class LS{
-    Node head;
-    Node tail;
 
-    public Node add(int data){
-        this.tail=head;
-        if (this.head!=null){
-            Node temp=new Node(data);
-            this.tail.next=temp;
-            this.tail=temp;
-        }else {
-            this.head=new Node(data);
-            this.tail=head;
-        }
-        return tail;
-    }
-
-    public void data(){
-        Node temp=this.head;
-        while (temp!=null){
-            System.out.println(temp.data+"->");
-            temp=temp.next;
-        }
-    }
-
-}
 
 
 
 public class LinkedList {
     public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5,6,7};
+        System.out.println(convertArrToLL(arr).getData());
 
-        LS ls=new LS();
-        ls.add(5);
-        ls.add(8);
-        ls.add(7);
-        ls.add(9);
-        ls.data();
+        Node temp = convertArrToLL(arr);
+        while (temp!=null){
+            System.out.print(temp.getData()+"-> ");
+            temp=temp.next;
+        }
 
 
     }
 
-    public static Node ll(int[] arr){
+
+    public static Node convertArrToLL(int[] arr){
         Node head = new Node(arr[0]);
-        Node tail = head;
-        for (int i = 1; i <arr.length ; i++) {
-            Node temp = new Node(arr[i]);
-            tail.next=temp;
-            tail=temp;
+        Node mover = head;
+        for(int i=1;i<arr.length;i++){
+            Node newNode = new Node(arr[i]);
+            mover.next=newNode;
+            mover=newNode;
         }
 
         return head;
     }
+
+
 }
