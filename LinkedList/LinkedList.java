@@ -79,6 +79,9 @@ public class LinkedList {
         head=insertTail(head,78);
         printLL(head);
 
+        head=insertAtKthIndex(head,88,5);
+        printLL(head);
+
 
 
 
@@ -204,6 +207,26 @@ public class LinkedList {
         }
         Node newEl=new Node(data);
         temp.next=newEl;
+        return head;
+    }
+
+    public static Node insertAtKthIndex(Node head,int data,int k){
+        if (head==null){
+            if (k==1) return new Node(data);
+            else return null;
+        }
+        if (k==1)return new Node(data,head);
+        Node temp=head;int count=0;
+        while (temp!=null){
+            count++;
+            if (count==k-1){
+                Node x=new Node(data);
+                x.next=temp.next;
+                temp.next=x;
+                break;
+            }
+            temp=temp.next;
+        }
         return head;
     }
 
