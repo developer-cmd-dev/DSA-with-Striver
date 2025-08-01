@@ -76,6 +76,9 @@ public class LinkedList {
         head = insertHead(head,56);
         printLL(head);
 
+        head=insertTail(head,78);
+        printLL(head);
+
 
 
 
@@ -186,6 +189,22 @@ public class LinkedList {
 
     public static Node insertHead(Node head,int data){
         return new Node(data,head);
+
+
+
+
+
+    }
+
+    public static Node insertTail(Node head,int data){
+        if (head==null) return new Node(data);
+        Node temp=head;
+        while (temp.next!=null){
+            temp=temp.next;
+        }
+        Node newEl=new Node(data);
+        temp.next=newEl;
+        return head;
     }
 
 
