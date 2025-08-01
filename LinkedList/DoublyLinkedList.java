@@ -29,13 +29,16 @@ public class DoublyLinkedList {
         Node2 head=traverseArray(arr);
         printLL(head);
 
+        head=deleteHead(head);
+        printLL(head);
+
 
 
     }
 
     public static void printLL(Node2 head){
         Node2 temp = head;
-        System.out.println("Linked List");
+        System.out.println("Doubly Linked List");
         while (temp!=null){
             System.out.print(temp.data+"-> ");
             temp=temp.next;
@@ -55,5 +58,18 @@ public class DoublyLinkedList {
 
         }
         return head;
+    }
+
+    public static Node2 deleteHead(Node2 head){
+        if (head==null) return head;
+
+        if (head.next==null && head.back==null) return null;
+
+        Node2 temp=head.next;
+        temp.back=null;
+        head=temp;
+        return head;
+
+
     }
 }
