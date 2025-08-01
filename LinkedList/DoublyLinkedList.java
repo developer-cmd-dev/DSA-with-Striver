@@ -31,6 +31,8 @@ public class DoublyLinkedList {
 
         head=deleteHead(head);
         printLL(head);
+        head=deleteTail(head);
+        printLL(head);
 
 
 
@@ -70,6 +72,20 @@ public class DoublyLinkedList {
         head=temp;
         return head;
 
+    }
+    public static Node2 deleteTail(Node2 head){
+        if (head==null) return head;
+
+
+        Node2 tail=head;
+        while (tail.next!=null){
+            tail=tail.next;
+        }
+        Node2 prev = tail.back;
+        prev.next=null;
+        return head;
 
     }
+
+
 }
