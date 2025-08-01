@@ -213,13 +213,13 @@ public class LinkedList {
     public static Node insertAtKthIndex(Node head,int data,int k){
         if (head==null){
             if (k==1) return new Node(data);
-            else return null;
+            else return head;
         }
         if (k==1)return new Node(data,head);
         Node temp=head;int count=0;
         while (temp!=null){
             count++;
-            if (count==k-1){
+            if (count==(k-1)){
                 Node x=new Node(data);
                 x.next=temp.next;
                 temp.next=x;
