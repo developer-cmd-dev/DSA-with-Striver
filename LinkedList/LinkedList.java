@@ -79,7 +79,11 @@ public class LinkedList {
         head=insertTail(head,78);
         printLL(head);
 
-        head=insertAtKthIndex(head,88,5);
+        head=insertAtKthIndex(head,88,4);
+        printLL(head);
+
+
+        head=insertBeforValue(head,67,4);
         printLL(head);
 
 
@@ -220,6 +224,24 @@ public class LinkedList {
         while (temp!=null){
             count++;
             if (count==(k-1)){
+                Node x=new Node(data);
+                x.next=temp.next;
+                temp.next=x;
+                break;
+            }
+            temp=temp.next;
+        }
+        return head;
+    }
+    public static Node insertBeforValue(Node head,int data,int val){
+        if (head==null){
+          return null;
+        }
+        if (head.data==val)return new Node(data,head);
+        Node temp=head;
+        while (temp.next!=null){
+
+            if (temp.next.data==val){
                 Node x=new Node(data);
                 x.next=temp.next;
                 temp.next=x;
