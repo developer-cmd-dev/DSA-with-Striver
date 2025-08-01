@@ -69,19 +69,27 @@ public class LinkedList {
 //        }
 //        System.out.println();
 
-        int el=1;
-        head = deleteElement(head,el);
-        temp = head;
+//        int el=1;
+//        head = deleteElement(head,el);
+//        printLL(head);
+
+        head = insertHead(head,56);
+        printLL(head);
+
+
+
+
+
+    }
+
+    public static void printLL(Node head){
+        Node temp = head;
         System.out.println("Linked List");
         while (temp!=null){
             System.out.print(temp.getData()+"-> ");
             temp=temp.next;
         }
         System.out.println();
-
-
-
-
     }
 
 
@@ -174,6 +182,10 @@ public class LinkedList {
 
         return head;
 
+    }
+
+    public static Node insertHead(Node head,int data){
+        return new Node(data,head);
     }
 
 
