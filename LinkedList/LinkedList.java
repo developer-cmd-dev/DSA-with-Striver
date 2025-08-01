@@ -59,9 +59,19 @@ public class LinkedList {
 //            temp=temp.next;
 //        }
 
-        int k=3;
-         head = deleteKElementLL(head,k);
-         temp = head;
+//        int k=7;
+//         head = deleteKElementLL(head,k);
+//         temp = head;
+//        System.out.println("Linked List");
+//        while (temp!=null){
+//            System.out.print(temp.getData()+"-> ");
+//            temp=temp.next;
+//        }
+//        System.out.println();
+
+        int el=1;
+        head = deleteElement(head,el);
+        temp = head;
         System.out.println("Linked List");
         while (temp!=null){
             System.out.print(temp.getData()+"-> ");
@@ -144,6 +154,26 @@ public class LinkedList {
             temp=temp.next;
         }
         return head;
+    }
+
+    public static Node deleteElement(Node head,int el){
+        if (head==null) return head;
+        if (head.data==el){
+            head=head.next;
+            return head;
+        }
+
+        Node temp=head;Node prev=null;
+        while (temp!=null){
+            if (temp.data==el){
+                prev.next=prev.next.next;
+            }
+            prev=temp;
+            temp=temp.next;
+        }
+
+        return head;
+
     }
 
 
