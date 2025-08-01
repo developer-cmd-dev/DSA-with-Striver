@@ -29,11 +29,47 @@ public class LinkedList {
         int[] arr = {1,2,3,4,5,6,7};
         System.out.println(convertArrToLL(arr).getData());
 
-        Node temp = convertArrToLL(arr);
+        Node head = convertArrToLL(arr);
+        Node temp = head;
+        System.out.println("Linked List");
         while (temp!=null){
             System.out.print(temp.getData()+"-> ");
             temp=temp.next;
         }
+        System.out.println();
+//
+//        System.out.println("Length-> "+getLength(arr));
+//
+//        int target=4;
+//        System.out.println("Search -> "+target+" "+ searchLL(head,target));
+//
+//
+//         temp = deleteLL(head);
+//        System.out.println("First Element deleted in Linked List");
+//        while (temp!=null){
+//            System.out.print(temp.getData()+"-> ");
+//            temp=temp.next;
+//        }
+//        System.out.println();
+//
+//        temp = deleteTail(head);
+//        System.out.println("Tail Element deleted in Linked List");
+//        while (temp!=null){
+//            System.out.print(temp.getData()+"-> ");
+//            temp=temp.next;
+//        }
+
+        int k=3;
+         head = deleteKElementLL(head,k);
+         temp = head;
+        System.out.println("Linked List");
+        while (temp!=null){
+            System.out.print(temp.getData()+"-> ");
+            temp=temp.next;
+        }
+        System.out.println();
+
+
 
 
     }
@@ -50,6 +86,67 @@ public class LinkedList {
 
         return head;
     }
+
+    public static int getLength(int[]arr){
+        Node head = new Node(arr[0]);
+        Node mover = head;
+        int length=1;
+        for(int i=1;i<arr.length;i++){
+            Node newNode = new Node(arr[i]);
+            mover.next=newNode;
+            mover=newNode;
+            length++;
+        }
+
+        return length;
+    }
+
+    public static boolean searchLL(Node head,int target){
+        Node temp = head;
+        System.out.println("Linked List");
+        while (temp!=null){
+            if (temp.getData()==target) return true;
+            temp=temp.next;
+        }
+        return false;
+
+    }
+
+    public static Node deleteLL(Node head){
+        return head=head.next;
+    }
+
+
+    public static Node deleteTail(Node head){
+        if (head==null||head.next==null)return null;
+
+        Node temp = head;
+        while (temp.next.next!=null){
+            temp=temp.next;
+        }
+        temp.next=null;
+        return head;
+    }
+
+    public static Node deleteKElementLL(Node head,int k){
+        if (head==null) return head;
+        if(k==1){
+            head=head.next;
+            return head;
+        }
+        int count=0;Node temp=head;Node prev=null;
+        while (temp!=null){
+            count++;
+            if (count==k){
+                prev.next=prev.next.next;
+            }
+            prev=temp;
+            temp=temp.next;
+        }
+        return head;
+    }
+
+
 
 
 }
