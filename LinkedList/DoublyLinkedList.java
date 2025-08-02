@@ -39,6 +39,8 @@ public class DoublyLinkedList {
 
         head=insertHead(head,56);
         printLL(head);
+        head=insertTail(head,56);
+        printLL(head);
 
 
 
@@ -124,6 +126,18 @@ public class DoublyLinkedList {
         Node2 newEl=new Node2(data,head,null);
         head.back=newEl;
         return newEl;
+    }
+
+    public static Node2 insertTail(Node2 head,int data){
+        if (head==null) return new Node2(data);
+
+        Node2 temp=head;
+        while (temp.next!=null){
+            temp=temp.next;
+        }
+        Node2 newEl=new Node2(data,null,temp);
+        temp.next=newEl;
+        return head;
     }
 
 
