@@ -37,6 +37,9 @@ public class DoublyLinkedList {
         head=deleteKElement(head,1);
         printLL(head);
 
+        head=insertHead(head,56);
+        printLL(head);
+
 
 
 
@@ -114,6 +117,13 @@ public class DoublyLinkedList {
             front.back=prev;
         }
         return head;
+    }
+
+    public static Node2 insertHead(Node2 head,int data){
+        if(head==null) return new Node2(data);
+        Node2 newEl=new Node2(data,head,null);
+        head.back=newEl;
+        return newEl;
     }
 
 
