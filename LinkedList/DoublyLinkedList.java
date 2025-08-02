@@ -34,6 +34,11 @@ public class DoublyLinkedList {
         head=deleteTail(head);
         printLL(head);
 
+        head=deleteKElement(head,1);
+        printLL(head);
+
+
+
 
 
     }
@@ -85,6 +90,30 @@ public class DoublyLinkedList {
         prev.next=null;
         return head;
 
+    }
+
+    public static Node2 deleteKElement(Node2 head,int k){
+        if(head==null) return null;
+        Node2 temp=head;
+        int count=0;
+        while (temp!=null){
+            count++;
+            if (count==k)break;
+            temp=temp.next;
+        }
+        Node2 prev=temp.back;
+        Node2 front=temp.next;
+        if (prev==null && front==null){
+            return null;
+        }else if (prev==null){
+            return deleteHead(temp);
+        }else if (front==null){
+            return deleteTail(temp);
+        }else{
+            prev.next=front;
+            front.back=prev;
+        }
+        return head;
     }
 
 
