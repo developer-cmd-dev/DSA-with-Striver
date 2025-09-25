@@ -29,6 +29,9 @@ public class LinkedList {
 //        Convert Array to Linked List.
         Node head = convertArr2LL(arr);
         traverseLL(head);
+
+//        Search in Linked List.
+        System.out.println(searchInLL(head,4));
     }
 
     public static Node convertArr2LL(int[] arr){
@@ -50,6 +53,16 @@ public class LinkedList {
             System.out.print(temp.data+"-> ");
             temp=temp.next;
         }
+        System.out.println();
+    }
+
+    public static boolean searchInLL(Node head,int target){
+        Node temp = head;
+        while (temp!=null){
+            if(temp.data==target)return true;
+            temp=temp.next;
+        }
+    return false;
     }
 
 
