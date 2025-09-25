@@ -44,6 +44,15 @@ public class LinkedList {
 //        Delete Kth element From the linked List.
         deleteKthElement(head,4);
         traverseLL(head);
+
+
+//        Insert Head in Linked List.
+        head = insertHead(head,45);
+        traverseLL(head);
+
+//        Insert Tail in Linked List;
+        insertTail(head,85);
+        traverseLL(head);
     }
 
     public static Node convertArr2LL(int[] arr){
@@ -108,6 +117,7 @@ temp.next = null;
             count++;
             if(count==k){
                 prev.next = prev.next.next;
+                break;
             }
             prev=temp;
             temp=temp.next;
@@ -115,6 +125,28 @@ temp.next = null;
         return head;
     }
 
+    public static Node insertHead(Node head,int data){
+        if (head==null){
+            return new Node(data);
+        }
+        Node newData = new Node(data);
+        newData.next = head;
+        head=newData;
+        return head;
+    }
+
+    public static Node insertTail(Node head,int data){
+        if (head==null){
+            return new Node(data);
+        }
+        Node temp = head;
+        while(temp.next!=null){
+            temp = temp.next;
+        }
+       Node newNode = new Node(data);
+        temp.next = newNode;
+        return head;
+    }
 
 
 }
