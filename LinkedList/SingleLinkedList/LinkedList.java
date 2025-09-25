@@ -32,6 +32,14 @@ public class LinkedList {
 
 //        Search in Linked List.
         System.out.println(searchInLL(head,4));
+
+//        Delete head in Linked List.
+        head = deletehead(head);
+        traverseLL(head);
+
+//        Delete Tail in Linked List.
+        deleteTail(head);
+        traverseLL(head);
     }
 
     public static Node convertArr2LL(int[] arr){
@@ -63,6 +71,24 @@ public class LinkedList {
             temp=temp.next;
         }
     return false;
+    }
+
+    public static Node deletehead(Node head){
+        if(head==null)return head;
+        Node temp = head;
+        head=head.next;
+        return head;
+    }
+
+    public static Node deleteTail(Node head){
+        if(head==null || head.next==null)return null;
+        Node temp = head;
+        while(temp.next.next!=null){
+            temp=temp.next;
+        }
+
+temp.next = null;
+    return head;
     }
 
 
