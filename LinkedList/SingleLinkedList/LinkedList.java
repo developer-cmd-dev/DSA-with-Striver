@@ -53,6 +53,11 @@ public class LinkedList {
 //        Insert Tail in Linked List;
         insertTail(head,85);
         traverseLL(head);
+
+
+//        Insert at kth position in Linked List.
+        insertAtKthPos(head,3,56);
+        traverseLL(head);
     }
 
     public static Node convertArr2LL(int[] arr){
@@ -145,7 +150,34 @@ temp.next = null;
         }
        Node newNode = new Node(data);
         temp.next = newNode;
+
         return head;
+    }
+
+    public static Node insertAtKthPos(Node head,int k,int element){
+        if (head==null) return new Node(element);
+        if(k==1){
+            Node newNode = new Node(element);
+            newNode.next=head.next;
+            head.next=newNode;
+        }
+
+        Node temp = head;
+        int count=0;
+        while (temp!=null){
+            count++;
+            if (count==k){
+                Node newNode = new Node(element);
+                newNode.next=temp.next;
+                temp.next=newNode;
+                break;
+            }
+            temp=temp.next;
+        }
+
+        return head;
+
+
     }
 
 
