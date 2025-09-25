@@ -22,13 +22,34 @@ public class LinkedList {
     public static void main(String[] args) {
         System.out.println("This is linked list");
 
+//        Create a Node in linked list.
         int[] arr ={1,2,3,4,5};
         Node newNode = new Node(arr[0]);
-        System.out.println(newNode.data);
+
+//        Convert Array to Linked List.
+        Node head = convertArr2LL(arr);
+        traverseLL(head);
     }
 
-    public static void addLinkedList(int data,Node next){
+    public static Node convertArr2LL(int[] arr){
+        Node head = new Node(arr[0]);
+        Node tail = head;
+        for (int i = 1; i < arr.length; i++) {
+            Node temp = new Node(arr[i]);
+            tail.next = temp;
+            tail = temp;
+        }
 
+        return head;
+    }
+
+    public static void traverseLL(Node head){
+        Node temp = head;
+
+        while (temp!=null){
+            System.out.print(temp.data+"-> ");
+            temp=temp.next;
+        }
     }
 
 
