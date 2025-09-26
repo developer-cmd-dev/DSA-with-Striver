@@ -1,6 +1,7 @@
 package LinkedList.DoubleLinkedList;
 
 
+import java.util.HexFormat;
 
 class Node2{
     int data;
@@ -36,6 +37,10 @@ public class DoublyLinkedList {
 
 //        Delete Tail in Doubly Linked List;
         head = deleteTail(head);
+        traverseLL(head);
+
+//        Delete Kth pos element;
+        head = deleteKthPosEl(head,2);
         traverseLL(head);
 
 
@@ -88,6 +93,33 @@ public class DoublyLinkedList {
         return head;
     }
 
+    public static Node2 deleteKthPosEl(Node2 head,int k){
+        if (head==null) return null;
+        Node2 temp = head;
+        int count=0;
+        while (temp.next!=null){
+            count++;
+            if (count==k)break;
+            temp=temp.next;
+        }
+
+        Node2 front = temp.next;
+        Node2 prev= temp.back;
+
+        if (prev==null && front==null){
+            return null;
+        }
+        else if (prev==null) {
+            deleteHead(head);
+        }else if(front==null){
+            deleteTail(head);
+        }else{
+            prev.next=front;
+            front.back=prev;
+        }
+        return head;
+
+    }
 
 
 
