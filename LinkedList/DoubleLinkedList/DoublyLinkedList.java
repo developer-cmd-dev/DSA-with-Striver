@@ -34,6 +34,10 @@ public class DoublyLinkedList {
         head = deleteHead(head);
         traverseLL(head);
 
+//        Delete Tail in Doubly Linked List;
+        head = deleteTail(head);
+        traverseLL(head);
+
 
 
 
@@ -61,8 +65,6 @@ public class DoublyLinkedList {
             temp=temp.next;
         }
         System.out.println();
-
-
     }
 
 
@@ -73,6 +75,21 @@ public class DoublyLinkedList {
         temp.back=null;
         return head=temp;
     }
+
+    public static Node2 deleteTail(Node2 head){
+        Node2 temp = head;
+        while (temp.next!=null){
+            temp=temp.next;
+        }
+
+        Node2 prev = temp.back;
+        prev.next=null;
+        temp.back=null;
+        return head;
+    }
+
+
+
 
 
 
