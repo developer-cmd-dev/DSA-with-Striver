@@ -25,10 +25,14 @@ class Node2{
 public class DoublyLinkedList {
     public static void main(String[] args) {
 
+//        Array traverse in Doubly Linked List.
         int[] arr={1,2,3,4,5,6};
         Node2 head = traverseArr(arr);
         traverseLL(head);
 
+//        Delete Head in Doubly Linked List.
+        head = deleteHead(head);
+        traverseLL(head);
 
 
 
@@ -56,8 +60,18 @@ public class DoublyLinkedList {
             System.out.print(temp.data+"-> <-");
             temp=temp.next;
         }
+        System.out.println();
 
 
+    }
+
+
+    public static Node2 deleteHead(Node2 head){
+        if (head==null || head.next ==null && head.back==null) return null;
+
+        Node2 temp = head.next;
+        temp.back=null;
+        return head=temp;
     }
 
 
