@@ -6,13 +6,13 @@ public class ReverseALinkedList {
         Node head = LinkedList.traverseArr(arr);
         LinkedList.printLL(head);
 
-        head=reverseLL(head);
+        head=reverseLLIterativeAppr(head);
         LinkedList.printLL(head);
 
 
     }
 
-    public static Node reverseLL(Node head){
+    public static Node reverseLLIterativeAppr(Node head){
         Node prev=null;
         Node temp=head;
 
