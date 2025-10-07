@@ -6,7 +6,8 @@ public class ReverseALinkedList {
         Node head = LinkedList.traverseArr(arr);
         LinkedList.printLL(head);
 
-        head=reverseLLIterativeAppr(head);
+//        head=reverseLLIterativeAppr(head);
+        head=reverseLLRecursiveApproach(head);
         LinkedList.printLL(head);
 
 
@@ -23,5 +24,16 @@ public class ReverseALinkedList {
             temp=front;
         }
         return prev;
+    }
+
+
+    public static Node reverseLLRecursiveApproach(Node head){
+        if (head==null|| head.next==null) return head;
+
+        Node newHead = reverseLLRecursiveApproach(head.next);
+        Node front = head.next;
+        front.next=head;
+        head.next=null;
+        return newHead;
     }
 }
